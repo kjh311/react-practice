@@ -28,8 +28,74 @@
 </div>
 
 <script type="text/babel">
+
+var Movie = React.createClass({
+  render: function(){
+    return(
+      <div>
+        <h1>{this.props.title}</h1>
+        <h2>{this.props.genre}</h2>
+      </div>
+    );
+  }
+});
+
+var Comment = React.createClass({
+  edit: function(){
+    alert('Edit button works!');
+  },
+  remove: function(){
+    alert('Delete button works!');
+  },
+  render: function(){
+    return(
+      <div>
+      <div>{this.props.children}</div>
+        <button onClick={this.edit}>Edit</button>
+        <button onClick={this.remove}>Delete</button>
+      </div>
+    );
+  }
+});
+
+var Checkbox = React.createClass({
+  
+  getInitialState: function(){
+    return {checked: true}
+  },
+
+  handleChecked: function(){
+    this.setState({checked: !this.state.checked})
+  },
+
+  render: function(){
+    var msg;
+    if(this.state.checked){
+      msg= "checked"
+    }else{
+      msg = "unchecked"
+    }
+    return (
+      <div>
+        <input type="checkbox" onChange={this.handleChecked} defaultChecked={this.state.checked} />
+        <h3>Checkbox is {msg}</h3>
+      </div>
+    );
+  }
+});
+
+
   ReactDOM.render(
-  <h1>Hi, My name's Kevin!!!</h1>,
+  <div>
+    <Movie title="Avatar" genre="action" />
+    <Movie title="Breakfast Club" genre="Comedy" />
+    <Movie title="Aliens" genre="action/horror" />
+    <Movie title="The Incredibles" genre="Animation" />
+    <Comment>Hey Now!</Comment>
+    <Comment>I'm a child!</Comment>
+    <Checkbox />
+
+  </div>,
     document.getElementById('main')
   );
 </script>
