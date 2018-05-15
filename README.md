@@ -1,1 +1,1 @@
-Creating a React Boilerplate using CDNs
+practicing with React
