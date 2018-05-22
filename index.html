@@ -20,6 +20,32 @@
 
 	<script type="text/babel">
 
+		var Checkbox = React.createClass({
+
+			getInitialState: function () {
+				return {checked: true}
+			},
+
+			handleChecked: function () {
+				this.setState({checked: !this.state.checked})
+			},
+
+			render: function () {
+					var msg;
+					if(this.state.checked){
+						msg = 'checked'
+					}else{
+						msg = 'unchecked'
+					}
+				return (
+					<div>
+						<input type="checkbox" onChange={this.handleChecked} defaultChecked={this.state.checked} />
+						<h2>This checkbox is {msg}</h2>
+					</div>
+				);
+			}
+		});
+
 		var Header = React.createClass({
 			edit: function(){
 				alert("Edit!");
@@ -30,6 +56,7 @@
 			render: function(){
 				return(
 					<div>
+						<h1>{this.props.children}</h1>
 						<button onClick={this.edit} >Edit</button>
 						<button onClick={this.remove}>Remove</button>
 					</div>
@@ -71,11 +98,14 @@
 		<div>
 			<Bacon title="Mmmm...bacon" genre="bacony goodness" />
 			<Goodies />
+			<Checkbox />
 		</div>, document.getElementById('example'));
 
 		ReactDOM.render(
 		<div>
-			<Header/>
+			<Header>Header 1</Header>
+			<Header>Header 2</Header>
+			<Header>Header 3</Header>
 		</div>, document.getElementById('header'));
 
 		ReactDOM.render(
