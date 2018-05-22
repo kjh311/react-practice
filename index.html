@@ -16,13 +16,22 @@
 
 	<div id="example"></div>
 
+	<div id="footer"></div>
+
 	<script type="text/babel">
 
 		var Header = React.createClass({
+			edit: function(){
+				alert("Edit!");
+			},
+			remove: function(){
+				alert('removing!');
+			},
 			render: function(){
 				return(
 					<div>
-						<button>{this.props.title}</button>
+						<button onClick={this.edit} >Edit</button>
+						<button onClick={this.remove}>Remove</button>
 					</div>
 				);
 			}
@@ -48,6 +57,16 @@
 			}
 		});
 
+		var Footer = React.createClass({
+			render: function(){
+				return (
+					<div>
+						<p className="center">Made with love by Kevin Huelsmann &copy; 2018</p>
+					</div>
+				);
+			}
+		});
+
 		ReactDOM.render(
 		<div>
 			<Bacon title="Mmmm...bacon" genre="bacony goodness" />
@@ -56,8 +75,13 @@
 
 		ReactDOM.render(
 		<div>
-			<Header title="This is a button" />
+			<Header/>
 		</div>, document.getElementById('header'));
+
+		ReactDOM.render(
+		<div>
+			<Footer />
+		</div>, document.getElementById('footer'));
 
 
 
