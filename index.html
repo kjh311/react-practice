@@ -12,9 +12,29 @@
 </head>
 <body>
 
+	<div id="header"></div>
+
 	<div id="example"></div>
 
 	<script type="text/babel">
+
+		var Header = React.createClass({
+			render: function(){
+				return(
+					<div>
+						<button>{this.props.title}</button>
+					</div>
+				);
+			}
+		});
+
+		var Goodies = React.createClass({
+			render: function(){
+				return (
+					<h1>This is a goodie bag!</h1>
+				);	
+			}
+		});
 
 
 		var Bacon = React.createClass({
@@ -28,9 +48,18 @@
 			}
 		});
 
-		ReactDOM.render(<div>
+		ReactDOM.render(
+		<div>
 			<Bacon title="Mmmm...bacon" genre="bacony goodness" />
+			<Goodies />
 		</div>, document.getElementById('example'));
+
+		ReactDOM.render(
+		<div>
+			<Header title="This is a button" />
+		</div>, document.getElementById('header'));
+
+
 
 	</script>
 	
